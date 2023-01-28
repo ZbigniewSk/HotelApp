@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Room, RoomList } from './rooms';
 
 @Component({
   selector: 'app-rooms',
@@ -8,7 +9,56 @@ import { Component } from '@angular/core';
 export class RoomsComponent {
   hotelName = 'Gulugulu Hotel';
   numberOfRooms = 10;
-  hideRooms = false;
+  hideRooms = true;
+  rooms: Room = { availableRooms: 10, bookedRooms: 5, totalRooms: 20 };
+
+  tableHeader = [
+    'Number',
+    'Type',
+    'Price',
+    'Amenities',
+    'Checkin Time',
+    'Checkout Time',
+  ];
+
+  roomList: RoomList[] = [
+    {
+      number: 101,
+      type: 'Deluxe Room',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 500,
+      photos: 'https://unsplash.com/photos/s4yfYIz964U',
+      checkinTime: new Date('11-Nov-2022'),
+      checkoutTime: new Date('12-Nov-2022'),
+    },
+    {
+      number: 205,
+      type: 'Deluxe Room',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 1000,
+      photos: 'https://unsplash.com/photos/rEJxpBskj3Q',
+      checkinTime: new Date('11-Nov-2022'),
+      checkoutTime: new Date('13-Nov-2022'),
+    },
+    {
+      number: 510,
+      type: 'Private Suite',
+      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+      price: 15000,
+      photos: 'https://unsplash.com/photos/WgkA3CSFrjc',
+      checkinTime: new Date('15-Nov-2022'),
+      checkoutTime: new Date('19-Nov-2022'),
+    },
+  ];
+
+  tableContent = this.roomList.map((v) => [
+    v.number,
+    v.type,
+    v.price,
+    v.amenities,
+    v.checkinTime,
+    v.checkoutTime,
+  ]);
 
   toggle() {
     this.hideRooms = !this.hideRooms;

@@ -3,6 +3,16 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
+      gridTemplateAreas: {
+        table: [
+          "header header header header header header",
+          "number type price amenities checkin checkout",
+          "footer footer footer footer footer footer",
+        ],
+      },
+      gridTemplateColumns: {
+        table: "10px auto auto auto auto auto auto 10px",
+      },
       keyframes: {
         "color-text": {
           "0%": {
@@ -35,5 +45,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@savvywombat/tailwindcss-grid-areas")],
 };

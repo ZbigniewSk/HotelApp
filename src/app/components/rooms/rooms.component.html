@@ -27,3 +27,77 @@
     </button>
   </div>
 </div>
+
+<div class="grid grid-cols-table mt-10">
+  <div
+    class="text-2xl font-bold text-center col-span-6 col-start-2 p-3 bg-purple-50"
+  >
+    Rooms List
+  </div>
+
+  <div class="p-3 font-bold text-xl text-center col-start-2 bg-teal-50">
+    Number
+  </div>
+  <div class="p-3 font-bold text-xl text-center bg-teal-50">Type</div>
+  <div class="p-3 font-bold text-xl text-center bg-teal-50">Price</div>
+  <div class="p-3 font-bold text-xl text-center bg-teal-50">Amenities</div>
+  <div class="p-3 font-bold text-xl text-center bg-teal-50">Checkin Time</div>
+  <div class="p-3 font-bold text-xl text-center bg-teal-50">Checkout Time</div>
+
+  <ng-container *ngFor="let room of roomList; let e = even">
+    <div
+      class="p-3 col-start-2 text-center"
+      [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'"
+    >
+      {{ room.number }}
+    </div>
+    <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
+      {{ room.type }}
+    </div>
+    <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
+      {{ room.price }}$
+    </div>
+    <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
+      {{ room.amenities }}
+    </div>
+    <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
+      {{ room.checkinTime }}
+    </div>
+    <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
+      {{ room.checkoutTime }}
+    </div>
+  </ng-container>
+</div>
+
+<div class="m-5">
+  <table
+    class="table-fixed border-collapse border-slate-300 border-solid border"
+  >
+    <thead>
+      <tr>
+        <th class="font-bold text-xl p-3" colspan="6">Rooms List</th>
+      </tr>
+      <tr>
+        <th
+          class="p-3 text-center border border-slate-300"
+          *ngFor="let text of tableHeader"
+        >
+          {{ text }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        [ngClass]="e ? 'bg-amber-50' : 'bg-pink-50'"
+        *ngFor="let room of tableContent; let e = even"
+      >
+        <td
+          class="p-3 text-center border border-slate-300"
+          *ngFor="let content of room; let i = index"
+        >
+          {{ content }}<span *ngIf="i == 2">$</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

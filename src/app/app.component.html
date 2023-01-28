@@ -1,4 +1,12 @@
 <div class="border-b-indigo-200 border-b-2 h-32 bg-gray-50">
   <h1 class="text-indigo-700 font-sans text-2xl">1. Hello world!</h1>
 </div>
-<app-rooms></app-rooms>
+
+<div [ngSwitch]="role">
+  <div *ngSwitchCase="'User'">Welcome User!</div>
+  <div *ngSwitchCase="'Admin'">
+    <div>Welcome Admin!</div>
+    <app-rooms></app-rooms>
+  </div>
+  <div *ngSwitchDefault>Fatal error! Please kindly format your hard drive.</div>
+</div>
