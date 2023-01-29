@@ -19,6 +19,7 @@ export class RoomsComponent {
     'Amenities',
     'Checkin Time',
     'Checkout Time',
+    'Rating',
   ];
 
   roomList: RoomList[] = [
@@ -30,6 +31,7 @@ export class RoomsComponent {
       photos: 'https://unsplash.com/photos/s4yfYIz964U',
       checkinTime: new Date('11-Nov-2022'),
       checkoutTime: new Date('12-Nov-2022'),
+      rating: 3.71234,
     },
     {
       number: 205,
@@ -39,6 +41,7 @@ export class RoomsComponent {
       photos: 'https://unsplash.com/photos/rEJxpBskj3Q',
       checkinTime: new Date('11-Nov-2022'),
       checkoutTime: new Date('13-Nov-2022'),
+      rating: 4.98768,
     },
     {
       number: 510,
@@ -48,16 +51,18 @@ export class RoomsComponent {
       photos: 'https://unsplash.com/photos/WgkA3CSFrjc',
       checkinTime: new Date('15-Nov-2022'),
       checkoutTime: new Date('19-Nov-2022'),
+      rating: 2.87345,
     },
   ];
 
-  tableContent = this.roomList.map((v) => [
+  tableContent: any[][] = this.roomList.map((v) => [
     v.number,
     v.type,
     v.price,
     v.amenities,
     v.checkinTime,
     v.checkoutTime,
+    v.rating,
   ]);
 
   toggle() {

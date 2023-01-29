@@ -43,8 +43,8 @@
   <div class="p-3 font-bold text-xl text-center bg-teal-50">Amenities</div>
   <div class="p-3 font-bold text-xl text-center bg-teal-50">Checkin Time</div>
   <div class="p-3 font-bold text-xl text-center bg-teal-50">Checkout Time</div>
-
-  <ng-container *ngFor="let room of roomList; let e = even">
+  <!-- slice pipe -->
+  <ng-container *ngFor="let room of roomList | slice : 1 : 3; let e = even">
     <div
       class="p-3 col-start-2 text-center"
       [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'"
@@ -55,23 +55,23 @@
       {{ room.type }}
     </div>
     <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
-      {{ room.price }}$
+      {{ room.price | currency : "EUR" }}
     </div>
     <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
       {{ room.amenities }}
     </div>
     <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
-      {{ room.checkinTime }}
+      {{ room.checkinTime | date : "short" }}
     </div>
     <div class="p-3 text-center" [ngClass]="e ? 'bg-purple-50' : 'bg-teal-50'">
-      {{ room.checkoutTime }}
+      {{ room.checkoutTime | date : "medium" }}
     </div>
   </ng-container>
 </div>
 
 <div class="m-5">
   <table
-    class="table-fixed border-collapse border-slate-300 border-solid border"
+    class="table-auto w-full border-collapse border-slate-300 border-solid border"
   >
     <thead>
       <tr>
@@ -95,8 +95,29 @@
           class="p-3 text-center border border-slate-300"
           *ngFor="let content of room; let i = index"
         >
-          {{ content }}<span *ngIf="i == 2">$</span>
+          <span>{{
+            i === 4 || i === 5
+              ? (content | date)
+              : i === 2
+              ? (content | currency : "GBP")
+              : i === 6
+              ? (content | number : "1.2-2")
+              : content
+          }}</span>
+          <!-- <ng-container [ngSwitch]="i">
+            <span *ngSwitchCase="2">{{ content | currency : "EUR" }}</span>
+            <span *ngSwitchCase="4">{{ content | date }}</span>
+            <span *ngSwitchCase="5">{{ content | date }}</span>
+            <span *ngSwitchDefault>{{ content }}</span>
+          </ng-container> -->
+          <!-- <span *ngIf="i == 2">{{ content | currency }}</span>
+          <span *ngIf="i == 4 || i == 5">{{ content | date }}</span>
+          <span *ngIf="i == 0 || i == 1 || i == 3">{{ content }}</span> -->
         </td>
+      </tr>
+      <tr>
+        <!-- json pipe - display what is in object -->
+        <!-- <td colspan="6">{{ roomList | json }}</td> -->
       </tr>
     </tbody>
   </table>
