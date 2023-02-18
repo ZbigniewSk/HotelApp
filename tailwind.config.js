@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
@@ -32,7 +33,7 @@ module.exports = {
         },
       },
       animation: {
-        "color-text": "color-text 2s linear infinite",
+        "color-text": "color-text 3s linear infinite",
         "font-size": "font-size 1s ease-in-out infinite",
       },
 
@@ -42,8 +43,20 @@ module.exports = {
       backgroundImage: {
         "color-text-anim":
           "linear-gradient(90deg, #4f46e5, #65a30d, #e11d48, #4f46e5, #65a30d, #e11d48, #4f46e5)",
+        "double-color-text-anim":
+          "linear-gradient(90deg, #7c3aed, #f59e0b, #7c3aed, #f59e0b, #7c3aed)",
+        "double-color":
+          "linear-gradient(90deg, #7e22ce 15%, #fbbf24, #7e22ce 35% 65%, #fbbf24, #7e22ce 85%)",
+        "double-color-2":
+          "linear-gradient(90deg, #9f1239 15%, #2dd4bf, #9f1239 35% 65%, #2dd4bf, #9f1239 85%)",
       },
     },
   },
-  plugins: [require("@savvywombat/tailwindcss-grid-areas")],
+  plugins: [
+    require("@savvywombat/tailwindcss-grid-areas"),
+    require("@tailwindcss/forms")({
+      strategy: "class",
+    }),
+    require("@tailwindcss/typography"),
+  ],
 };

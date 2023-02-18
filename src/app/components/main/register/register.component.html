@@ -1,0 +1,60 @@
+<div>
+  <div class="py-5 ml-5 text-blue-600">
+    <a routerLink="/">home page</a>
+  </div>
+  <div class="flex justify-center py-5">
+    <div class="p-6 rounded-lg shadow-lg bg-white max-w-sm min-w-max">
+      <form>
+        <div class="mb-6">
+          <label
+            for="exampleInputEmail2"
+            class="form-label inline-block mb-2 text-gray-700"
+            >Name</label
+          >
+          <input
+            type="name"
+            class="input"
+            placeholder="Enter name"
+            name="name"
+            [(ngModel)]="name"
+            id="name"
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            for="exampleInputEmail2"
+            class="form-label inline-block mb-2 text-gray-700"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="input"
+            placeholder="Enter email"
+            name="email"
+            [(ngModel)]="email"
+            id="email"
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            for="exampleInputPassword2"
+            class="form-label inline-block mb-2 text-gray-700"
+            >Password</label
+          >
+          <input
+            type="password"
+            class="input"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="password"
+            id="password"
+          />
+        </div>
+
+        <div class="mb-2">
+          <button (click)="register()" class="btn-blue w-full">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

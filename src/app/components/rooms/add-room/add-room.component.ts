@@ -34,4 +34,8 @@ export class AddRoomComponent {
     // this.numberOfRooms = this.rooms.length;
     // this.numberOfRooms += 1;
   }
+
+  ngOnDestroy() {
+    // console.log('add-room destroy');
+  }
 }

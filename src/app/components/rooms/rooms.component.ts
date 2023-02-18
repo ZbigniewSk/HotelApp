@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+
+import { localStorageToken } from 'src/app/services/localstorage.token';
+import { RoomsService } from 'src/app/services/rooms.service';
 import { Room, RoomList } from './rooms';
 
 @Component({
@@ -15,45 +23,20 @@ export class RoomsComponent implements OnInit {
   rooms: Room = { availableRooms: 0, bookedRooms: 0, totalRooms: 0 };
   roomList: RoomList[] = [];
 
-  constructor() {}
+  items?: any[];
+
+  constructor(
+    private roomsService: RoomsService,
+    @Inject(localStorageToken) private localStorage: Storage
+  ) {}
 
   ngOnInit(): void {
     this.rooms = { availableRooms: 10, bookedRooms: 5, totalRooms: 20 };
 
-    this.roomList = [
-      {
-        number: 101,
-        type: 'Deluxe Room',
-        amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 500,
-        photos: 'https://unsplash.com/photos/s4yfYIz964U',
-        checkinTime: new Date('11-Nov-2022'),
-        checkoutTime: new Date('12-Nov-2022'),
-        rating: 3.71234,
-      },
-      {
-        number: 205,
-        type: 'Deluxe Room',
-        amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 1000,
-        photos: 'https://unsplash.com/photos/rEJxpBskj3Q',
-        checkinTime: new Date('11-Nov-2022'),
-        checkoutTime: new Date('13-Nov-2022'),
-        rating: 4.98768,
-      },
-      {
-        number: 510,
-        type: 'Private Suite',
-        amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 15000,
-        photos: 'https://unsplash.com/photos/WgkA3CSFrjc',
-        checkinTime: new Date('15-Nov-2022'),
-        checkoutTime: new Date('19-Nov-2022'),
-        rating: 2.87345,
-      },
-    ];
+    this.roomList = this.roomsService.getRooms();
     this.numberOfRooms = this.roomList.length;
-    // console.log('init', this.numberOfRooms);
+
+    // getNames();
   }
 
   toggle() {

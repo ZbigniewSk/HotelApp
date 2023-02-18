@@ -1,0 +1,71 @@
+<div>
+  <div class="py-5 ml-5 text-blue-600">
+    <a routerLink="/">home page</a>
+  </div>
+  <div class="flex justify-center py-5">
+    <div class="p-6 rounded-lg shadow-lg bg-white max-w-sm min-w-max">
+      <form>
+        <div class="mb-6">
+          <label
+            for="exampleInputEmail2"
+            class="form-label inline-block mb-2 text-gray-700"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="input"
+            placeholder="Enter email"
+            name="email"
+            [(ngModel)]="email"
+            id="email"
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            for="exampleInputPassword2"
+            class="form-label inline-block mb-2 text-gray-700"
+            >Password</label
+          >
+          <input
+            type="password"
+            class="input"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="password"
+            id="password"
+          />
+        </div>
+        <div class="flex flex-col items-center mb-6">
+          <!-- <div>
+            <input
+              type="checkbox"
+              class="form-checkbox h-4 w-4 border border-gray-300 rounded-sm bg-white transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer focus:ring-transparent"
+              id="exampleCheck2"
+            />
+            <label
+              class="form-check-label inline-block text-gray-800"
+              for="exampleCheck2"
+              >Remember me</label
+            >
+          </div> -->
+          <a
+            href="#!"
+            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >Forgot password?</a
+          >
+        </div>
+        <div class="mb-2">
+          <button (click)="login()" class="btn-blue w-full">Sign in</button>
+          <p class="text-gray-800 mt-3 mb-3 text-center">
+            Not a member?
+            <a
+              href="/register"
+              class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+              >Register</a
+            >
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

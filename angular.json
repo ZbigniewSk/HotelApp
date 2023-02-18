@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+            
               "src/styles.css"
             ],
             "scripts": []
@@ -87,9 +88,20 @@
               "src/assets"
             ],
             "styles": [
+             
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "hotelapp:build:production",
+            "firebaseProject": "angular-course-6d09e",
+            "firebaseHostingSite": "angular-course-6d09e"
           }
         }
       }

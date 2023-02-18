@@ -78,6 +78,10 @@ export class RoomsListComponent implements OnInit {
     ]);
   }
 
+  ngOnDestroy() {
+    // console.log('koniec room-list');
+  }
+
   toggleTable(): void {
     this.hideTable = !this.hideTable;
   }
